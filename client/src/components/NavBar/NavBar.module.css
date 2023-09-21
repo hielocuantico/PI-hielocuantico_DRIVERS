@@ -1,0 +1,11 @@
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-left: 10px;
+    color: black;
+}
