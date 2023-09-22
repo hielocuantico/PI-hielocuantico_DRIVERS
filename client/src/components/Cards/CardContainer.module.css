@@ -1,6 +1,21 @@
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    
+    justify-content: space-around;    
+}
+
+.filterContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.searchBar {
+    display: flex
+}
+
+input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 20%;
 }

@@ -53,7 +53,6 @@ export const getTeams = () => {
     return async (dispatch) => {
         try {
             const { data } = await axios('http://localhost:3001/teams')
-            console.log(`Teams: ${data}`);
             return dispatch({
                 type: GET_TEAMS,
                 payload: data
