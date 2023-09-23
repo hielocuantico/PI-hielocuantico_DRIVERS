@@ -1,10 +1,17 @@
-import { GET_DRIVERS, GET_TEAMS, GET_DRIVERID, GET_DRIVERNAME, POST_CREATEDRIV } from './actionsTypes'
 import axios from 'axios'
+import {
+    URL_API,
+    GET_DRIVERS,
+    GET_TEAMS,
+    GET_DRIVERID,
+    GET_DRIVERNAME,
+    POST_CREATEDRIV,
+} from './actionsTypes'
 
 export const getDrivers = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios('http://localhost:3001/drivers')
+            const { data } = await axios(`${URL_API}/drivers`)
 
             return dispatch({
                 type: GET_DRIVERS,
@@ -17,10 +24,10 @@ export const getDrivers = () => {
     }
 }
 
-export const getDriverId = () => {
+export const getDriverId = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios('http://localhost:3001/drivers/:idDriver')
+            const { data } = await axios(`${URL_API}/drivers/${id}`)
 
             return dispatch({
                 type: GET_DRIVERID,
@@ -33,10 +40,10 @@ export const getDriverId = () => {
     }
 }
 
-export const getDriverName = () => {
+export const getDriverName = (name) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios('http://localhost:3001/name')
+            const { data } = await axios(`${URL_API}/drivers/name?name=${name}`)
 
             return dispatch({
                 type: GET_DRIVERNAME,
@@ -52,7 +59,7 @@ export const getDriverName = () => {
 export const getTeams = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios('http://localhost:3001/teams')
+            const { data } = await axios(`${URL_API}/teams`)
             return dispatch({
                 type: GET_TEAMS,
                 payload: data
@@ -67,7 +74,7 @@ export const getTeams = () => {
 export const postDriver = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post('http://localhost:3001//drivers')
+            const { data } = await axios.post(`${URL_API}/drivers`)
 
             return dispatch({
                 type: POST_CREATEDRIV,
@@ -79,3 +86,7 @@ export const postDriver = () => {
         }
     }
 }
+
+// Paginacion
+
+// Filtros

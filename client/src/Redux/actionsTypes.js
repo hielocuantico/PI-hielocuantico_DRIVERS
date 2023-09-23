@@ -1,3 +1,5 @@
+export const URL_API = 'http://localhost:3001'
+
 export const GET_DRIVERS = "GET_DRIVERS"; 
 export const GET_TEAMS = "GET_TEAMS"; 
 export const GET_DRIVERID = "GET_DRIVERID"; 

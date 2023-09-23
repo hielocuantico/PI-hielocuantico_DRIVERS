@@ -10,7 +10,7 @@ const router = Router();
 router.get('/drivers', getDrivers)
 router.get('/teams', getAllTeams)
 router.get('/drivers/name', getDriverName)
-router.get('/drivers/:idDriver', getDriverId)
+router.get('/drivers/:id', getDriverId)
 router.post('/drivers', createDriv)
 
 module.exports = router;
