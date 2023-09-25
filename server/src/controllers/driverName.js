@@ -2,9 +2,11 @@ const listDriver = require('./listDriver');
 
 module.exports = async (name) => {
     const drivers = await listDriver();
+    const nameSplit = name.split(" ").join("")
 
     const driverName = drivers.filter((driver) => {
-        return driver.name.toLowerCase().includes(name.toLowerCase());
+        const $name = driver.name + driver.lastName
+        return $name.toLowerCase().includes(nameSplit.toLowerCase())
     });
 
     if (driverName.length === 0) {

@@ -4,8 +4,12 @@ import {
     GET_DRIVERS,
     GET_TEAMS,
     GET_DRIVERID,
-    GET_DRIVERNAME,
     POST_CREATEDRIV,
+    FILTER_BY_TEAM,
+    FILTER_ORDER_BY,
+    FILTER_DOB,
+    FILTER_BY_NAME,
+    SET_PAGINATION_PAGE,
 } from './actionsTypes'
 
 export const getDrivers = () => {
@@ -31,22 +35,6 @@ export const getDriverId = (id) => {
 
             return dispatch({
                 type: GET_DRIVERID,
-                payload: data
-            })
-
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
-
-export const getDriverName = (name) => {
-    return async (dispatch) => {
-        try {
-            const { data } = await axios(`${URL_API}/drivers/name?name=${name}`)
-
-            return dispatch({
-                type: GET_DRIVERNAME,
                 payload: data
             })
 
@@ -87,6 +75,53 @@ export const postDriver = () => {
     }
 }
 
-// Paginacion
-
 // Filtros
+
+export const filterByTeam = (team) => {
+    return {
+        type: FILTER_BY_TEAM,
+        payload: team
+    }
+}
+
+export const filterByOrder = (orden) => {
+    return {
+        type: FILTER_ORDER_BY,
+        payload: orden
+    }
+}
+
+export const filterByDOB = (orden) => {
+    return {
+        type: FILTER_DOB,
+        payload: orden
+    }
+}
+
+export const filterDataRoute = () => {
+    return {
+        type: FILTER_DATA_ROUTE,
+        payload: true
+    }
+}
+
+export const searchByName = (name) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios(`${URL_API}/drivers/name?name=${name}`)
+
+            return dispatch({
+                type: FILTER_BY_NAME,
+                payload: data
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const setPaginationPage = (pageNumber) => ({
+    type: SET_PAGINATION_PAGE,
+    payload: pageNumber,
+});
