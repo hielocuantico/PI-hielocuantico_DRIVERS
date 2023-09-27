@@ -8,6 +8,7 @@ import styles from './CardContainer.module.css';
 function CardContainer() {
   const drivers = useSelector((state) => state.drivers);
   const driversByTeams = useSelector((state) => state.driversByTeams)
+  const dataRouteFilter = useSelector((state) => state.dataRouteFilter);
   const currentPage = useSelector((state) => state.currentPage);
   const dispatch = useDispatch();
 
@@ -16,15 +17,35 @@ function CardContainer() {
   const endIndex = startIndex + driversPerPage
 
   const driversFiltered = driversByTeams.length !== 0
-      ? driversByTeams.slice(startIndex, endIndex)
-      : drivers.slice(startIndex, endIndex)
+    ? driversByTeams.slice(startIndex, endIndex).filter((driver) => {
+      if (dataRouteFilter === "") {
+        return true;
+      } else if (dataRouteFilter === "api") {
+        return typeof driver.id === "number";
+      } else if (dataRouteFilter === "database") {
+        return typeof driver.id === "string";
+      } else {
+        return true;
+      }
+    })
+    : drivers.slice(startIndex, endIndex).filter((driver) => {
+      if (dataRouteFilter === "") {
+        return true;
+      } else if (dataRouteFilter === "api") {
+        return typeof driver.id === "number";
+      } else if (dataRouteFilter === "database") {
+        return typeof driver.id === "string";
+      } else {
+        return true;
+      }
+    });
 
   useEffect(() => {
     dispatch(getDrivers());
-  }, [driversByTeams, dispatch])
+  }, [driversByTeams])
 
   return (
-    <>
+    <div className="container">
       <DriversPagination />
       <div className={styles.cardContainer}>
         {driversFiltered?.map((driver) => (
@@ -34,12 +55,12 @@ function CardContainer() {
             name={driver.name}
             lastName={driver.lastName}
             dob={driver.dob}
-            teams={driver.teams}
+            teams={driver.teams?.split(",").join(", ")}
             image={driver.image}
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,19 +1,24 @@
 import {
   GET_DRIVERS,
   GET_TEAMS,
+  GET_DRIVERID,
   FILTER_BY_TEAM,
   FILTER_ORDER_BY,
   FILTER_DOB,
   FILTER_BY_NAME,
-  SET_PAGINATION_PAGE
+  FILTER_DATA_ROUTE,
+  SET_PAGINATION_PAGE,
+  RESET_DETAIL
 } from "./actionsTypes";
 
 const initialState = {
   drivers: [],
   teams: [],
   driversByTeams: [],
+  driverDetail: [],
   currentPage: 1,
   totalPages: 0,
+  dataRouteFilter: "",
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -38,6 +43,17 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         teams: payload,
       };
+
+    case GET_DRIVERID:
+      return {
+        ...state,
+        driverDetail: payload
+      }
+    case RESET_DETAIL:
+      return {
+        ...state,
+        driverDetail: payload
+      }
 
     case FILTER_BY_TEAM:
       const filtroTeams = state.drivers.filter((driver) => driver.teams?.includes(payload)); {
@@ -88,6 +104,12 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         [filterState]: ordenDob
       }
+
+    case FILTER_DATA_ROUTE:
+      return {
+        ...state,
+        dataRouteFilter: payload
+      };
 
     case FILTER_BY_NAME:
       return {

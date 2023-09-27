@@ -9,7 +9,9 @@ import {
     FILTER_ORDER_BY,
     FILTER_DOB,
     FILTER_BY_NAME,
+    FILTER_DATA_ROUTE,
     SET_PAGINATION_PAGE,
+    RESET_DETAIL,
 } from './actionsTypes'
 
 export const getDrivers = () => {
@@ -44,6 +46,13 @@ export const getDriverId = (id) => {
     }
 }
 
+export const resetDetail = () => {
+    return {
+        type: RESET_DETAIL,
+        payload: [],
+    }
+}
+
 export const getTeams = () => {
     return async (dispatch) => {
         try {
@@ -75,8 +84,6 @@ export const postDriver = () => {
     }
 }
 
-// Filtros
-
 export const filterByTeam = (team) => {
     return {
         type: FILTER_BY_TEAM,
@@ -98,10 +105,10 @@ export const filterByDOB = (orden) => {
     }
 }
 
-export const filterDataRoute = () => {
+export const filterDataRoute = (dataRoute) => {
     return {
         type: FILTER_DATA_ROUTE,
-        payload: true
+        payload: dataRoute
     }
 }
 

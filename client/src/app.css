@@ -1,0 +1,52 @@
+/*Estilos generales*/
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: rgba(192,1,19, 1);
+}
+
+#root{
+    --primary-color: #ff0000;
+    --color-white: #ffffff;
+    --color-black: #000;
+    --primary-font: 'Racing Sans One', cursive;
+}
+
+.container{
+    width: 70vw;
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+ }
+  
+ul, li{
+    list-style: none;
+}
+  
+h1,h2,h3,p{
+    margin: 1rem 0;
+}
+
+input,
+select{
+    padding: 12px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn{
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--primary-font);
+  border: none;
+}
+
+.btnPrimary{
+  padding: 0.6rem 2rem;
+  background-color: var(--color-black);
+  color: #fff;
+  border: 1px solid var(--color-black);
+}

@@ -1,4 +1,4 @@
-const newDriver = require('../controllers/newDriver')
+const newDriver = require('../controllers/newDriver');
 
 module.exports = async (req, res) => {
     try {
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
             dob,
             teams
         );
-
+        console.log(postDriver);
         res.status(201).json(postDriver);
 
     } catch (error) {

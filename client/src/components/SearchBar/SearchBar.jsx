@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../Redux/actions";
+import styles from './SearchBar.module.css'
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const [nameToFilter, setNameToFilter] = useState('');
 
     const handleSearch = () => {
+        if(!nameToFilter || !isNaN(nameToFilter)) return alert('Ingresa un nombre valido');
         dispatch(searchByName(nameToFilter));
     }
 
@@ -21,9 +23,9 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
-            <input type="text" value={nameToFilter} onKeyDown={handleKeyDown} onChange={handleChange} />
-            <button onClick={handleSearch}>Buscar</button>
+        <div className={styles.containerSearch}>
+            <input type="text" value={nameToFilter} onKeyDown={handleKeyDown} onChange={handleChange} placeholder='Ingrese un nombre' className={styles.inputSearch} />
+            <button onClick={handleSearch} className={`${styles.btnSearch} btn btnPrimary`}>Buscar</button>
         </div>
     )
 }

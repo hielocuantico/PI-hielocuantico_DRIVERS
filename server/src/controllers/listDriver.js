@@ -12,7 +12,7 @@ module.exports = async () => {
             name: driv.name.forename,
             lastName: driv.name.surname,
             description: driv.description,
-            image: driv.image.url || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmgLLrt1ycoOuMB5gFRArtBcuBBTJrvjRpQ&usqp=CAU",
+            image: driv.image.url || "https://hips.hearstapps.com/hmg-prod/images/sergio-perez-of-mexico-and-oracle-red-bull-racing-prepares-news-photo-1647447330.jpg?crop=1.00xw:0.751xh;0,0.0415xh&resize=980:*",
             nationality: driv.nationality,
             dob: driv.dob,
             teams: driv.teams
@@ -28,17 +28,15 @@ module.exports = async () => {
         }
     })
 
-    // Formato para teams en string única
     const teamsString = dbDrivers.map((driver) => driver.Teams.map((team) => team.name).join(", "));
 
-    // Formato para drivers DB, image por defecto
     const $drivers = dbDrivers.map((driver, index) => {
         return {
             id: driver.id,
             name: driver.name,
             lastName: driver.lastName,
             description: driver.description,
-            image: driver.image.url || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmgLLrt1ycoOuMB5gFRArtBcuBBTJrvjRpQ&usqp=CAU",
+            image: driver.image.url || "https://hips.hearstapps.com/hmg-prod/images/sergio-perez-of-mexico-and-oracle-red-bull-racing-prepares-news-photo-1647447330.jpg?crop=1.00xw:0.751xh;0,0.0415xh&resize=980:*",
             nationality: driver.nationality,
             dob: driver.dob,
             teams: teamsString[index]

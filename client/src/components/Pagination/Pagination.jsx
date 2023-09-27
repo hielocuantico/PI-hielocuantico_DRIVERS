@@ -1,24 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPaginationPage } from '../../Redux/actions';
+import styles from './Pagination.module.css'
 
 function DriversPagination() {
     const drivers = useSelector((state) => state.drivers);
     const driversByTeams = useSelector((state) => state.driversByTeams)
     const currentPage = useSelector((state) => state.currentPage);
     const dispatch = useDispatch();
-    
+
     const driversPerPage = 9;
-    const driversFiltered =
-        driversByTeams.length !== 0
-            ? driversByTeams
-            : drivers
+    const driversFiltered = driversByTeams.length !== 0
+        ? driversByTeams
+        : drivers
 
     const totalPages = Math.ceil(driversFiltered.length / driversPerPage);
 
     useEffect(() => {
         dispatch(setPaginationPage(1))
-    }, [totalPages, dispatch])
+    }, [totalPages])
 
     const handleClick = (pageNumber) => {
         dispatch(setPaginationPage(pageNumber));
@@ -63,11 +63,13 @@ function DriversPagination() {
     };
 
     return (
-        <div>
+        <div className={styles.containerPaginado}>
             <button onClick={handlePrevPage} disabled={currentPage === 1}>
                 Anterior
             </button>
-            {renderPageNumbers()}
+            <div className={styles.buttonsPaginado}>
+                {renderPageNumbers()}
+            </div>
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
                 Siguiente
             </button>

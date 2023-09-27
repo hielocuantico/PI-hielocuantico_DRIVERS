@@ -8,4 +8,6 @@ export const FILTER_BY_TEAM = "FILTER_BY_TEAM";
 export const FILTER_ORDER_BY = "FILTER_ORDER_BY";
 export const FILTER_DOB = "FILTER_DOB";
 export const FILTER_BY_NAME = "FILTER_BY_NAME";
+export const FILTER_DATA_ROUTE = "FILTER_DATA_ROUTE";
 export const SET_PAGINATION_PAGE = "RESET_RENDER";
+export const RESET_DETAIL = "RESET_DETAIL";

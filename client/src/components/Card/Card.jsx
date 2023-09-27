@@ -5,10 +5,14 @@ const Card = (props) => {
     return (
         <Link to={`/detail/${props.id}`} className={styles.Link}>
             <div className={styles.card}>
-                <p>Name: {`${props.name} ${props.lastName}`}</p>
-                <p>DOB: {props.dob}</p>
-                <p>Escuderias: {props.teams}</p>
-                <img src={props.image} alt={`imagen del corredor ${props.name} ${props.lastName}`} />
+                <div className={styles.imageContainer}>
+                    <img src={props.image} alt={`imagen del corredor ${props.name} ${props.lastName}`} />
+                </div>
+                <div className={styles.info}>
+                    <p>Name: <span> {`${props.name} ${props.lastName}`}</span></p>
+                    <p>DOB: <span>{props.dob}</span></p>
+                    <p>Escuderias: <span>{props.teams}</span></p>
+                </div>
             </div>
         </Link>
     )

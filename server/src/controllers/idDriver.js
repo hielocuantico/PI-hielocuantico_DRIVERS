@@ -14,7 +14,7 @@ module.exports = async (id) => {
             name: driver.name,
             lastName: driver.lastName,
             description: driver.description,
-            image: driver.image.url,
+            image: driver.image,
             nationality: driver.nationality,
             dob: driver.dob,
             teams: driver.teams ? driver.teams.split(",").map(team => team.trim()).join(", ") : "",
