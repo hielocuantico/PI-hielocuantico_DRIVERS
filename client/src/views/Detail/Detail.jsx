@@ -5,16 +5,18 @@ import { useParams } from "react-router-dom";
 import styles from "./Detail.module.css";
 
 const Detail = () => {
+
     const driverDetail = useSelector((state) => state.driverDetail);
     const { id } = useParams();
     const dispatch = useDispatch();
-        
+
     useEffect(() => {
         dispatch(getDriverId(id));
         return () => {
             dispatch(resetDetail())
         }
     }, []);
+    
 
     return (
         <div className={styles.containerDetail}>
